@@ -13,7 +13,7 @@ model.train(samples,responses)
 
 for index in range(1, 11):
     data = []
-    im = cv2.imread('Cropped_data/' + 'out' + str(index) + '.png')
+    im = cv2.imread('Cropped_data/' + 'append_out' + str(index) + '.png')
     gray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
     thresh = cv2.resize(gray, None, fx=2, fy=2, interpolation=cv2.INTER_AREA)
     im_resize = cv2.resize(im, None, fx=2, fy=2, interpolation=cv2.INTER_AREA)

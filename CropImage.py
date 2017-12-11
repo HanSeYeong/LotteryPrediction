@@ -16,14 +16,17 @@ def cropimage(num):
                 tp = 0
             imgGray[y, x] = tp
 
-    imgCrop = imgGray[500:890, 405:640]
+    imgCrop_left = imgGray[500:890, 405:439]
+    imgCrop_right = imgGray[500:890, 597:640]
 
-    return imgCrop
+    return imgCrop_left, imgCrop_right
 
 for i in range(1, 11):
-    cv2.imwrite('Cropped_data/' + 'out' + str(i) + '.png', cropimage(i))
+    append_im = np.concatenate((cropimage(i)[0], cropimage(i)[1]), axis=1)
+    cv2.imwrite('Cropped_data/' + 'append_out' + str(i) + '.png', append_im)
 
-
-#cv2.imshow("Cropped image", cropimage(3))
+#cv2.imshow("Cropped image", cropimage(3)[0])
+#cv2.waitKey(0)
+#cv2.imshow("Cropped image", cropimage(3)[1])
 #cv2.waitKey(0)
 #cv2.destroyAllWindows()
