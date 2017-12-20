@@ -10,18 +10,22 @@ def cropimage(num):
     for y in range(h):
         for x in range(w):
             tp = imgGray[y, x]
-            if tp < 127:
+            if tp < 250:
                 tp = 255
             else:
                 tp = 0
             imgGray[y, x] = tp
+    # With above one hundred indexs
+    # imgCrop_left = imgGray[500:890, 405:438]
+    # imgCrop_right = imgGray[500:890, 597:639]
 
-    imgCrop_left = imgGray[500:890, 405:439]
-    imgCrop_right = imgGray[500:890, 597:640]
+    # With below one hundred indexs
+    imgCrop_left = imgGray[500:890, 405:429]
+    imgCrop_right = imgGray[500:890, 590:630]
 
     return imgCrop_left, imgCrop_right
 
-for i in range(1, 11):
+for i in range(42, 53):
     append_im = np.concatenate((cropimage(i)[0], cropimage(i)[1]), axis=1)
     cv2.imwrite('Cropped_data/' + 'append_out' + str(i) + '.png', append_im)
 
